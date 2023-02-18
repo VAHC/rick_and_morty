@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://www.todofondos.net/wp-content/uploads/fondo-de-pantalla-de-1920x1080.-fondo-de-pantalla-hd-1080p-de-rick-y-morty-1.jpg');
+  background-attachment: fixed;
 }
 
 code {

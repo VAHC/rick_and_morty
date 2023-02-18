@@ -1,0 +1,54 @@
+nav {
+  background-color: rgba(28, 10, 189, 0.664);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  margin-bottom: 20px;
+  margin-top: -5px;
+}
+  
+nav img{
+  /* filter: hue-rotate(90deg); */
+  filter: saturate(100%); 
+}  
+
+.links{
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  color: yellow;
+  padding: 10px;
+  margin: 0px 15px;
+}
+
+.links:hover{
+  color: white;
+  background-color: rgb(11, 247, 30);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* .container input {
+    border-radius: 5px;
+    height: 30px;
+    margin-right: 15px;
+  }
+  
+  .container button{
+      background-color: mediumspringgreen;
+      color: black;
+      border-radius: 5px;
+      align-items: flex-end;
+      padding: 5px;    
+      cursor: pointer;     
+      height: 30px;  
+      font-weight: "bold"; 
+      margin-right: 15px;
+      font-size: 15px;
+      border: 0px;    
+    }
+  
+    button:hover{
+      background-color: gray;
+  } */
