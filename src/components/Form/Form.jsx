@@ -1,41 +1,26 @@
 import React from "react";
-import validation from "./validation.js";
+import validateInputs from "./validation.js";
 import styles from "./Form.module.css";
 
 export default function Form (props) {
 
     const [userData, setUserData] = React.useState({ 
-        username: '', 
-        password: '' 
+        username: "", 
+        password: "", 
       });
-
-    // const handleInputChange = (e) => {
-    //    const value = e.target.value;
-    //    const name = e.target.name;
-    //    setUserData({ ...userData, [name]: value });
-    //    setErrors(validateInputs(userData));
-    
-    //    console.log(errors);
-    // };
-    
-    const handleInputChange = (evento) => { 
-        setUserData({
-            ...userData,
-            [evento.target.name] : evento.target.value
-        });
-
-        setErrors(validation({
-            ...userData,
-            [evento.target.name] : evento.target.value
-          }))
-        console.log(errors);
-    }
 
     const [errors, setErrors] = React.useState({
         username: "",
         password: "",
-      });
+    });
 
+    const handleInputChange = (e) => {
+        const value = e.target.value;
+        const name = e.target.name;
+        setUserData({ ...userData, [name]: value });
+        setErrors(validateInputs(userData));
+      };
+        
     const handleSubmit = (evento) => {
         evento.prevenDefault();
         props.login(userData)

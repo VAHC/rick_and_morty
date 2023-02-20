@@ -35,7 +35,7 @@ const styleGender = {
 
 export function Card(props) {
 
-   const [isFav, setIsFav] = useState(false);
+   const [isFav, setIsFav] = useState(props.fav);
 
    function handleFavorite(id){
       if(isFav){
@@ -43,29 +43,37 @@ export function Card(props) {
          props.deleteFavorite(props.id);
       } else{
          setIsFav(true);
-         props.addFavorite(props);
+         props.addFavorite({
+            name: props.name,
+            species: props.species,
+            gender: props.gender,
+            image: props.image,
+            id: props.id,
+         });
       }
    }
 
    useEffect(() => {
-      props.myFavorites?.forEach((fav) => {
-         if (fav.id === props.id) {
+      props.myFavorites &&
+        props.myFavorites.forEach((fav) => {
+          if (fav.id === props.id) {
             setIsFav(true);
-         }
-      });
-   }, [props.myFavorites]);
+          }
+        });
+    });   
 
    return (
       <div className={styles.divCard}>
-         <Button className={styles.button} onClick={props.onClose}>X</Button>
-         {
-            isFav ? (
-               <button onClick={handleFavorite}>❤️</button>
-            ) : (
-               <button onClick={handleFavorite}>🤍</button>
-            )
-         }      
-         
+         <div style={{ display: "flex", justifyContent: "space-between" }}>
+            {props.onClose && <Button className={styles.button} onClick={props.onClose}>X</Button>}
+            {
+               isFav ? (
+                  <button onClick={handleFavorite}>❤️</button>
+               ) : (
+                  <button onClick={handleFavorite}>🤍</button>
+               )
+            }      
+         </div>         
          <Link to={`/detail/${props.id}`}>
             <nav style={styleNav}>
                <h3 className={styles.title}>{props.name}</h3>
@@ -95,11 +103,3 @@ export function mapStateToProps(state){
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);
 
-
-// addFavorite: function(fav){
-//    dispatch(addFavorite(fav))
-// }
-
-// deleteFavorite: function(id){
-//    dispatch(deleteFavorite(fav))
-// }

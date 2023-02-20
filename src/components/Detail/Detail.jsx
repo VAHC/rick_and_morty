@@ -30,7 +30,6 @@ export default function Detail(){
                 origin: char.origin.name,
                 image: char.image,
               });
-              console.log(character);
             } else {
               alert("No hay personajes con ese ID");
             }
@@ -40,7 +39,7 @@ export default function Detail(){
           });
       }, [detailId]);    
     
-        const navigate = useNavigate();
+    const navigate = useNavigate();
 
       return(
         <div>

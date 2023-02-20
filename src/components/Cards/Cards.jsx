@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../Card/Card,jsx';
+import Card from '../Card/Card.jsx';
 import styles from './Cards.module.css';
 
 
@@ -9,9 +9,9 @@ export default function Cards(props) {
    return(
       <div className={styles.divCards}>
          {characters.length === 0 ? (
-            <p style={{color: "red", marginTop: "150px", fontSize: "24px"}}>
+            <div style={{color: "yellow", marginTop: "150px", fontSize: "24px"}}>
                <h1>¡You can to look for Rick and Morty characters!</h1> 
-            </p>
+            </div>
          ) : (
             characters.map((e) => (
                <Card
