@@ -1,0 +1,15 @@
+
+.buttonFav{
+    position: relative;
+    right: -2000px;
+    top: 10px;
+    background-color: blue;
+    color: white;
+    border: 0px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
