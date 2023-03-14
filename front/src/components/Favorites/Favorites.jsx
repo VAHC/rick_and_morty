@@ -1,6 +1,6 @@
 import {Card} from "../Card/Card";
 import { connect, useDispatch } from "react-redux";
-import { filterCards, orderCards } from "../../redux/actions/actions";
+import { filterCards, orderCards, getFavorites } from "../../redux/actions/actions";
 import { useRef } from "react";
 import styled from "styled-components";
 
@@ -23,7 +23,8 @@ export function Favorites({myFavorites}){
     const dispatch = useDispatch();
 
     function handleReset(e){
-        dispatch({type: "RESET"});
+        // dispatch({type: "RESET"});
+        dispatch(getFavorites());
         filter.current.value = "";
         order.current.value = "";
     }

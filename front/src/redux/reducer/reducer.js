@@ -3,26 +3,38 @@ import { ADD_FAVORITE, DELETE_FAVORITE, FILTER, ORDER } from "../actions/types";
 const initialState = {
     allMyFavorites: [],
     myFavorites: [],
+    errors: {}
 };
 
 const rootReducer = (state = initialState, {type, payload}) => {
     switch(type){
         case ADD_FAVORITE:
-            const addFavorite = [...state.allMyFavorites, payload];
+            // const addFavorite = [...state.allMyFavorites, payload];
+            // return{
+            //     ...state,
+            //     allMyFavorites: [...addFavorite],
+            //     myFavorites: [...state.myFavorites],
+            // }
             return{
                 ...state,
-                allMyFavorites: [...addFavorite],
-                myFavorites: [...state.myFavorites],
+                myFavorites: payload,
+                allMyFavorites: payload,
+                errors: {}
             }
         case DELETE_FAVORITE:
-            const deleteFavorite = state.allMyFavorites.filter(
-                (e) => e.id !== payload
-            );
+            // const deleteFavorite = state.allMyFavorites.filter(
+            //     (e) => e.id !== payload
+            // );
+            // return{
+            //     ...state,
+            //     allMyFavorites: [...deleteFavorite],
+            //     myFavorites: [...deleteFavorite],
+            // };
             return{
                 ...state,
-                allMyFavorites: [...deleteFavorite],
-                myFavorites: [...deleteFavorite],
-            };
+                myFavorites: payload, // coloco solo payload porque es lo que le viene en el payload es lo que le envío en el back
+                errors: {}
+            }
         case FILTER:
             return{
                 ...state, 
@@ -46,6 +58,17 @@ const rootReducer = (state = initialState, {type, payload}) => {
                 ...state,
                 myFavorites: state.allMyFavorites,
             }
+        case "GET_FAVS":
+            return{
+                ...state,
+                myFavorites: payload,
+                errors: {}
+            };
+        case "ERROR":
+            return{
+                ...state,
+                errors: payload,
+            };
         default:
             return{
                 ...state

@@ -18,18 +18,21 @@ export default function Detail(){
     });
     
     useEffect(() => {
-        fetch(`https://rickandmortyapi.com/api/character/${detailId}`)
+        fetch(`http://localhost:3001/rickandmorty/detail/${detailId}`)
           .then((response) => response.json())
           .then((char) => {
             if (char.name) {
-              setCharacter({
-                name: char.name,
-                status: char.status,
-                specie: char.specie,
-                gender: char.specie,
-                origin: char.origin.name,
-                image: char.image,
-              });
+              setCharacter(
+                char
+            //     {
+            //     name: char.name,
+            //     status: char.status,
+            //     specie: char.specie,
+            //     gender: char.specie,
+            //     origin: char.origin.name,
+            //     image: char.image,
+            //   }
+              );
             } else {
               alert("No hay personajes con ese ID");
             }
