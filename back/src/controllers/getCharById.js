@@ -1,5 +1,5 @@
 const URL = "https://rickandmortyapi.com/api/character/";
-const { exists } = require('@11ty/eleventy/src/TemplatePath');
+//const { exists } = require('@11ty/eleventy/src/TemplatePath');
 const axios = require('axios');
 
 async function getCharById (req, res) {
