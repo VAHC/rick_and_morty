@@ -8,6 +8,7 @@ import Detail from './components/Detail/Detail.jsx';
 import Error from './components/Error/Error.jsx';
 import Form from './components/Form/Form.jsx';
 import {Favorites} from './components/Favorites/Favorites';
+import { useDispatch, useSelector } from 'react-redux';
 
 function App () {
   const [characters, setCharacters] = useState([]);
@@ -37,14 +38,18 @@ function App () {
 
   const location = useLocation();
 
-  const [access, setAccess] = useState(true);
+  const [access, setAccess] = useState(false);
+  
   const navigate = useNavigate();
-  const username = "prueba@gmail.com";
-  const password = "password321";
+  // const username = "prueba@gmail.com";
+  // const password = "password321";
+  
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.idUser);
 
   function login(userData){
-    if (userData.username === username && 
-      userData.password === password) {
+    dispatch(login(userData.username, userData.password));
+    if (user) {
         setAccess(true);
         navigate("/home");
    }

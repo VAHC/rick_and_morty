@@ -5,8 +5,7 @@ module.exports = (sequelize) => {
       id: {
          type: DataTypes.INTEGER,
          allowNull: false,
-         primaryKey: true,
-         autoIncrement: true
+         primaryKey: true
       },
       name: {
          type: DataTypes.STRING,
@@ -32,5 +31,11 @@ module.exports = (sequelize) => {
          type: DataTypes.STRING,
          allowNull: false
       }
-   });
+   },
+   {
+      timestamps: false,
+      tableName: "characters",
+   }
+   
+   );
 };

@@ -1,29 +1,27 @@
-// CON LA API
 const URL = "https://rickandmortyapi.com/api/character/";
-//const { exists } = require('@11ty/eleventy/src/TemplatePath');
 const axios = require('axios');
 
 async function getCharById (req, res) {
-    const {id} = req.params; // {id:12}
-    // "https://rickandmortyapi.com/api/character/12"
+    const params = req.params; 
+    
     try { 
-        const response = await axios(`https://rickandmortyapi.com/api/character/${id}`)
-        const data = await response.data
-        const character = {
-            id: data.id,
-            name: data.name,
-            species: data.species,
-            image: data.image,
-            gender: data.gender,
-        };
-        res
-            .status(200)
-            .json(character);
+        const {data} = await axios.get(`${URL}${params.id}`);
+        const obj = filterData(data);
+        
+        res.status(200).json(obj);
     } catch (error) {
-        res
-            .status(500)
-            .send(error.message);
+        res.status(500).json({message: error});
     }            
+};
+
+function filterData(data){
+    return{
+        id: data.id,
+        name: data.name,
+        species: data.species,
+        gender: data.gender,
+        image: data.image
+    };
 }
 
-module.exports = {getCharById};
+module.exports = {getCharById, filterData, URL};

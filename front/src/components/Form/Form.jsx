@@ -22,7 +22,7 @@ export default function Form (props) {
       };
         
     const handleSubmit = (evento) => {
-        evento.prevenDefault();
+        evento.preventDefault();
         props.login(userData)
     };
 
